@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уравнение Шрёдингера для различных систем и решения задач</title>
+    <link rel="stylesheet" href="first-lesson.css">
+    <link rel="stylesheet" href="./style.css">
+    
+    <script type="text/javascript" async 
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">World of Particles</a>
+            <ul class="nav-links">
+                <li><a href="./main_menu.html">В меню</a></li>
+                <li><a href="./first_lesson.html">Разделы уроков</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Уравнение Шрёдингера для различных систем и решения задач</h1>
+
+   
+        <video width="100%" controls>
+            <source src="./video.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+
+ 
+        <form id="quiz-form">
+            <div class="quiz-form">
+                <label>1. Рассмотрим частицу, находящуюся в одномерном потенциальном ящике длиной \(L\). Найдите энергетические уровни этой частицы.</label><br>
+
+                <input type="radio" name="q1" value="1">1. \[ E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2}, \quad n = 1, 2, 3, \dots \] <br>
+
+                <input type="radio" name="q1" value="2">2. \[ E_n = \frac{n^2 \pi \hbar^2}{2mL^2}, \quad n = 1, 2, 3, \dots \] <br>
+
+                <input type="radio" name="q1" value="3">3. \[ E_n = \frac{n^2 \hbar^2}{2mL^2}, \quad n = 1, 2, 3, \dots \] <br>
+
+                <input type="radio" name="q1" value="4">4. \[ E_n = \frac{2n^2 \pi^2 \hbar^2}{mL^2}, \quad n = 1, 2, 3, \dots \] <br>
+            </div>
+
+            <button type="button" id="check-btn">Проверить</button>
+        </form>
+
+        <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+    </div>
+
+    <aside>
+        <h1>Что такое уравнение Шрёдингера?</h1>
+        <p>Уравнение Шрёдингера — это основное уравнение квантовой механики, которое описывает, как изменяется волновая функция системы во времени или пространстве.</p>
+
+        <h2>Уравнение Шрёдингера для различных систем</h2>
+        <ul>
+            <li>1. Одномерная система (частица в ящике)</li>
+            <li>2. Частица в потенциале (гармонический осциллятор)</li>
+            <li>3. Атом водорода</li>
+        </ul>
+
+        <h2>Решения уравнений</h2>
+        <p>Уравнение для частицы в одномерном ящике:</p>
+        \[ -\frac{\hbar^2}{2m} \frac{\partial^2 \psi(x)}{\partial x^2} = E \psi(x) \]
+
+        <p>Граничные условия: \(\psi(0) = 0\), \(\psi(L) = 0\)</p>
+
+        <h2>Энергетические уровни</h2>
+        \[ E_n = \frac{n^2 \pi^2 \hbar^2}{2mL^2}, \quad n = 1, 2, 3, \dots \]
+
+        <h2>Волновая функция</h2>
+        \[ \psi_n(x) = \sqrt{\frac{2}{L}} \sin \left( \frac{n \pi x}{L} \right) \]
+    </aside>
+
+    <script>
+        document.getElementById("check-btn").addEventListener("click", checkQuiz);
+
+        function checkQuiz() {
+            let score = 0;
+            const correctAnswers = { q1: "1" };
+            const formData = new FormData(document.getElementById("quiz-form"));
+
+            for (let [question, answer] of formData.entries()) {
+                if (correctAnswers[question] === answer) {
+                    score++;
+                }
+            }
+
+            document.getElementById("result").innerText = "Вы набрали " + score + " из 1 баллов.";
+        }
+    </script>
+
+</body>
+</html>

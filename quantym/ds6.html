@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квантовая запутанность</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 20px;
+            background-color: #3f51b5;
+            color: white;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 50px auto;
+            width: 80%;
+        }
+
+        .particle {
+            width: 100px;
+            height: 100px;
+            background-color: #ff9800;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .particle:hover {
+            transform: scale(1.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3f51b5;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #283593;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Квантовая запутанность</h1>
+        <p>Наблюдайте, как состояния двух частиц связаны, даже если они находятся далеко друг от друга!</p>
+    </header>
+    <main>
+        <div class="container">
+            <div class="particle" id="particle1">?</div>
+            <div class="particle" id="particle2">?</div>
+        </div>
+        <button id="measureButton">Измерить состояния</button>
+        <button id="resetButton" class="hidden">Сбросить</button>
+    </main>
+    <script>
+        const particle1 = document.getElementById('particle1');
+        const particle2 = document.getElementById('particle2');
+        const measureButton = document.getElementById('measureButton');
+        const resetButton = document.getElementById('resetButton');
+
+        const states = [
+            { color: '#4caf50', state: '↑' },
+            { color: '#f44336', state: '↓' },
+            { color: '#2196f3', state: '←' },
+            { color: '#ffeb3b', state: '→' }
+        ];
+
+        measureButton.addEventListener('click', () => {
+            // Выбираем случайное состояние
+            const randomState = states[Math.floor(Math.random() * states.length)];
+            particle1.style.backgroundColor = randomState.color;
+            particle1.textContent = randomState.state;
+
+            // Связанное состояние второй частицы
+            particle2.style.backgroundColor = randomState.color;
+            particle2.textContent = randomState.state;
+
+            // Скрываем кнопку измерения и показываем сброс
+            measureButton.classList.add('hidden');
+            resetButton.classList.remove('hidden');
+        });
+
+        resetButton.addEventListener('click', () => {
+            // Сбрасываем частицы
+            particle1.style.backgroundColor = '#ff9800';
+            particle1.textContent = '?';
+            particle2.style.backgroundColor = '#ff9800';
+            particle2.textContent = '?';
+
+            // Скрываем сброс и показываем измерение
+            resetButton.classList.add('hidden');
+            measureButton.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

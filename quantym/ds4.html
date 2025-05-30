@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квантовая суперпозиция</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 20px;
+            background-color: #0288d1;
+            color: white;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        .lab {
+            margin: 20px auto;
+            width: 80%;
+            position: relative;
+            background-color: #e3f2fd;
+            border: 2px solid #0288d1;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .particle {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        .state {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #0288d1;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #01579b;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Квантовая суперпозиция</h1>
+        <p>Наблюдайте, как частица находится во всех состояниях одновременно!</p>
+    </header>
+    <main>
+        <div class="lab">
+            <div class="particle" id="particle"></div>
+            <p class="state" id="state"></p>
+        </div>
+        <div class="controls">
+            <button id="startButton">Начать суперпозицию</button>
+            <button id="measureButton" disabled>Измерить</button>
+        </div>
+    </main>
+    <script>
+        const particle = document.getElementById('particle');
+        const state = document.getElementById('state');
+        const startButton = document.getElementById('startButton');
+        const measureButton = document.getElementById('measureButton');
+
+        let states = ["Состояние 1", "Состояние 2"];
+        let superposition = false;
+
+        startButton.addEventListener('click', () => {
+            particle.style.display = 'block';
+            particle.style.animation = 'spin 1s linear infinite';
+            state.style.display = 'none';
+            superposition = true;
+            measureButton.disabled = false;
+        });
+
+        measureButton.addEventListener('click', () => {
+            if (superposition) {
+                particle.style.animation = 'none';
+                const randomState = states[Math.floor(Math.random() * states.length)];
+                state.textContent = `Результат измерения: ${randomState}`;
+                state.style.display = 'block';
+                superposition = false;
+                measureButton.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

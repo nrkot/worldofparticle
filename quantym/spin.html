@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спин и теория углового момента</title>
+     <link rel="stylesheet" href="first-lesson.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">world of particles
+            </a>
+            <ul class="nav-links">
+                <li><a href="c:\Users\user\Desktop\ib project 2024-2025\web\main_menu.html">в меню</a></li>
+                <li><a href="c:\Users\user\Desktop\ib project 2024-2025\web\first_lesson.html">разделы уроков</a></li>
+            </ul>
+            <div class="nuclear">
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Спин и теория углового момента</h1>
+        <video width="100%" controls>
+            <source src="video.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+        <form id="quiz-form">
+            <div class="quiz-form">
+                <label>1. Что такое спин?</label><br>
+                <input type="radio" name="q1" value="синий"> Вращение частицы вокруг оси
+                <br>
+                <input type="radio" name="q1" value="красный">Внутреннее квантовое свойство частицы.
+                <br>
+                <input type="radio" name="q1" value="синий">  Масса частицы.<br>
+                <input type="radio" name="q1" value="красный"> Заряд частицы.
+                <br>
+            </div>
+            <div class="quiz-form">
+                <label>2. Какие частицы имеют полуцелый спин?</label><br>
+                <input type="radio" name="q2" value="3"> Фермионы.
+
+                <br>
+                <input type="radio" name="q2" value="2"> Бозоны.
+
+
+                <br>
+                <input type="radio" name="q2" value="2">Фотон.
+
+                <br>
+                <input type="radio" name="q2" value="2">  Бозон Хиггса.
+                <br>
+                    
+            </div>
+            <div class="quiz-form">
+                <label>3.Чем отличается фермион от бозона?
+                </label><br>
+                <input type="radio" name="q3" value="красный"> Значением спина.
+
+                <br>
+                <input type="radio" name="q3" value="синий"> Наличием заряда.
+
+
+
+                <br>
+                <input type="radio" name="q3" value="синий"> Массовым числом.<br>
+                <input type="radio" name="q3" value="синий">Цветом.
+
+                <br>
+            </div>
+            
+            <div class="quiz-form">
+                <label>4.Что происходит с энергией частицы в магнитном поле?
+                </label><br>
+                <input type="radio" name="q4" value="синий"> Она остаётся неизменной.
+
+                <br>
+                <input type="radio" name="q4" value="красный">Она увеличивается или уменьшается в зависимости от ориентации спина.
+
+                <br>
+                <input type="radio" name="q4" value="синий">Она уменьшается только при нулевом спине.
+                <br>
+                <input type="radio" name="q4" value="синий">Она увеличивается пропорционально массе частицы.
+                <br>
+            </div>
+            <div class="quiz-form">
+                <label>5.. Как называется эффект изменения энергии частицы в магнитном поле из-за спина?
+                </label><br>
+                <input type="radio" name="q5" value="красный">Эффект Зеемана.
+
+
+                <br>
+                <input type="radio" name="q5" value="синий"> Фотоэффект.
+
+
+
+                <br>
+                <input type="radio" name="q5" value="синий">Импульс частицы.<br>
+                <input type="radio" name="q5" value="синий">Эффект Комптона.
+
+                <br>
+            </div>
+            
+            <button type="button" id="check-btn">Проверить</button>
+        </form>
+        <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+
+    </div>
+    <h1 class=";f"></h1>
+    <aside>
+       <h1>
+        Спин — это одна из фундаментальных характеристик элементарных частиц. В отличие от углового момента классических объектов, спин является чисто квантовой величиной, которая не имеет аналогов в классической механике.
+       </h1>
+       <h1>
+        Квантовый угловой момент J — это величина, характеризующая вращательное движение частиц и систем частиц. В квантовой механике угловой момент имеет две составляющие:
+       </h1>
+       <ul>
+            <li>
+                Орбитальный угловой момент L — связан с движением частицы вокруг центра.
+            </li>
+            <li>
+                Спин S — собственное вращение частицы, которое не зависит от движения в пространстве.
+            </li>
+            <li>
+                Формула для полного углового момента:J=L+S
+            </li>
+       </ul>
+        <h1>
+            Спин частицы — это квантовая величина, измеряемая в единицах ℏ/2. В зависимости от спина, частицы делятся на:
+        </h1>
+         <ul>
+            <li>
+                Фермионы — частицы с полуцелым спином (например, электроны, протоны, нейтроны) s= 1/2, 3/2
+            </li>
+            <li> Бозоны — частицы с целым спином (например, фотоны и бозоны Хиггса) 
+                s=0,1,2,….</li>
+        </ul>   
+        <h1> Основные свойства спина</h1>
+        <ul>
+            <li>
+                Правило сложения угловых моментов: если есть два угловых момента 
+                их сумма может принимать значения: J total=∣J1−J2∣,∣J 1−J2∣+1,…,J1+J2
+            </li>
+            <li>
+                квантовое число(s):
+                у каждой частицы есть определённоё значение спина(s)
+                s=0,1/2,1,3/2,...
+                например у фотона спин 1
+            </li>
+            <li>Частица без спина называются скалярными</li>
+            <li>
+                ориентация спина: спин проецируется на ось и применяет значение от -s до +s с шагом 1.
+                например: для электрона (s=1/2)возможны два проекции:
+                (+1/2)=вверх
+                (-1/2)=вниз
+            </li>
+        </ul>
+
+        <h1>
+            в заключений:
+        </h1>
+        <ul>
+            <li>
+                Теория углового момента и спина — это центральная часть квантовой механики. Эти концепции объясняют поведение элементарных частиц и взаимодействие с внешними полями. Без них невозможно понять такие явления, как ядерный магнитный резонанс (ЯМР), эффект Зеемана и спин-орбитальное взаимодействие.
+            </li>
+        </ul>
+
+
+        
+
+        
+
+
+    </aside>
+
+    <script>
+        document.getElementById("check-btn").addEventListener("click", checkQuiz);
+
+        function checkQuiz() {
+            let score = 0;
+            const answers = { q1: "красный", q2: "3",   q3:"красный",q4:"красный",q5:"красный"};
+            const formData = new FormData(document.getElementById("quiz-form"));
+
+            for (let [question, answer] of formData.entries()) {
+                if (answers[question] === answer) {
+                    score++;
+                }
+            }
+
+            document.getElementById("result").innerText = "Вы набрали " + score + " из 5 баллов.";
+        }
+        
+    </script>
+    
+</body>
+</html>
+
+

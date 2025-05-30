@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квантовое туннелирование</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #0288d1;
+            color: white;
+        }
+
+        main {
+            margin-top: 30px;
+        }
+
+        .lab {
+            margin: 20px auto;
+            width: 80%;
+            position: relative;
+            background-color: #e3f2fd;
+            border: 2px solid #0288d1;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .particle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: move 4s linear infinite;
+        }
+
+        .barrier {
+            width: 20px;
+            height: 80%;
+            background-color: #0288d1;
+            position: absolute;
+            right: 40%;
+            top: 10%;
+        }
+
+        @keyframes move {
+            0% { left: 0; }
+            50% { left: 40%; }
+            100% { left: 100%; }
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        input[type="range"] {
+            width: 300px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #0288d1;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #01579b;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Квантовое туннелирование</h1>
+        <p>Наблюдайте, как частица преодолевает потенциальный барьер!</p>
+        <h2>Как это работает:</h2>
+        <ul>
+            <li>
+                Анимация показывает движение частицы.
+            </li>
+            <li>
+                Пользователь может настроить энергию частицы и высоту барьера с помощью ползунков.
+            </li>
+            <li>
+                Вероятность туннелирования рассчитывается как 
+P=e 
+−2⋅(барьер−энергия)
+ , если энергия меньше барьера.
+            </li>
+            <li>
+                Результат случайным образом показывает, прошла ли частица через барьер.
+            </li>
+        </ul>
+    </header>
+    <main>
+        <div class="lab">
+            <div class="particle" id="particle"></div>
+            <div class="barrier" id="barrier"></div>
+        </div>
+        <div class="controls">
+            <label for="energy">Энергия частицы:</label>
+            <input type="range" id="energy" min="1" max="10" step="1" value="5">
+            <span id="energyValue">5</span>
+            <br>
+            <label for="barrierHeight">Высота барьера:</label>
+            <input type="range" id="barrierHeight" min="1" max="10" step="1" value="7">
+            <span id="barrierValue">7</span>
+            <br>
+            <button id="runExperiment">Запустить эксперимент</button>
+        </div>
+        <p id="result"></p>
+    </main>
+    <script>
+        const energyInput = document.getElementById('energy');
+        const barrierInput = document.getElementById('barrierHeight');
+        const energyValue = document.getElementById('energyValue');
+        const barrierValue = document.getElementById('barrierValue');
+        const resultText = document.getElementById('result');
+        const particle = document.getElementById('particle');
+
+        energyInput.addEventListener('input', () => {
+            energyValue.textContent = energyInput.value;
+        });
+
+        barrierInput.addEventListener('input', () => {
+            barrierValue.textContent = barrierInput.value;
+        });
+
+        document.getElementById('runExperiment').addEventListener('click', () => {
+            const energy = parseInt(energyInput.value);
+            const barrier = parseInt(barrierInput.value);
+
+            // Вероятность туннелирования
+            const probability = energy > barrier ? 1 : Math.exp(-2 * (barrier - energy));
+            const result = Math.random() < probability ? "Частица прошла через барьер!" : "Частица отразилась.";
+
+            resultText.textContent = result;
+
+            // Анимация частицы
+            particle.style.animation = probability > 0.5 
+                ? 'move 4s linear infinite' 
+                : 'none';
+        });
+    </script>
+</body>
+</html>

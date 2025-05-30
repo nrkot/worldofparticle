@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Квантовая хромодинамика (КХД)</title>
+
+    <script type="text/javascript" id="MathJax-script" async 
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <link rel="stylesheet" href="first-lesson.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <a href="#" class="logo">🌌 World of Particles</a>
+        <ul class="nav-links">
+            <li><a href="c:\Users\user\Desktop\ib project 2024-2025\web\main_menu.html">В меню</a></li>
+            <li><a href="c:\Users\user\Desktop\ib project 2024-2025\web\first_lesson.html">Разделы уроков</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="container">
+    <section class="video-section">
+        <h2>🎥 Видеоурок</h2>
+        <video width="100%" controls>
+            <source src="spin_and_angular_momentum.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </section>
+    <h1>📘 Квантовая хромодинамика (КХД)</h1>
+
+    <section class="theory">
+        <h2>📘 Теория</h2>
+        <p>Квантовая хромодинамика (КХД) — это теория, описывающая сильное взаимодействие между кварками и глюонами. Сильное взаимодействие — это одно из четырёх фундаментальных взаимодействий природы, и оно удерживает протоны и нейтроны внутри атомных ядер.</p>
+
+        <h3>📘 Основные понятия</h3>
+        <ul>
+            <li><b>Кварки</b> — элементарные частицы, из которых состоят адроны (протоны и нейтроны).</li>
+            <li><b>Глюоны</b> — частицы-переносчики сильного взаимодействия, которые "склеивают" кварки внутри адронов.</li>
+            <li><b>Цветной заряд</b> — аналог электрического заряда, но в КХД это три цвета: красный, зелёный и синий.</li>
+        </ul>
+
+        <h3>📘 Основные формулы</h3>
+        <p>Лагранжиан квантовой хромодинамики:  
+            \[
+            \mathcal{L} = -\frac{1}{4} F_{\mu \nu}^a F^{\mu \nu a} + \bar{\psi} (i \gamma^\mu D_\mu - m) \psi
+            \]
+        </p>
+        <p>Глюонное поле:  
+            \[
+            F_{\mu \nu}^a = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a + g f^{abc} A_\mu^b A_\nu^c
+            \]
+        </p>
+    </section>
+
+    <section class="quiz-section">
+        <h2>🧪 Тест</h2>
+        <form id="quiz-form">
+            <div class="quiz-form">
+                <label>1. Какая частица является переносчиком сильного взаимодействия?</label><br>
+                <input type="radio" name="q1" value="синий">Фотон<br>
+                <input type="radio" name="q1" value="красный">Глюон<br>
+                <input type="radio" name="q1" value="синий">Электрон<br>
+            </div>
+
+            <div class="quiz-form">
+                <label>2. Сколько типов кварков существует в природе?</label><br>
+                <input type="radio" name="q2" value="синий">3<br>
+                <input type="radio" name="q2" value="красный">6<br>
+                <input type="radio" name="q2" value="синий">9<br>
+            </div>
+
+            <div class="quiz-form">
+                <label>3. Какая физическая величина в КХД аналогична электрическому заряду в электродинамике?</label><br>
+                <input type="radio" name="q3" value="синий">Масса<br>
+                <input type="radio" name="q3" value="синий">Импульс<br>
+                <input type="radio" name="q3" value="красный">Цветной заряд<br>
+            </div>
+
+            <button type="button" id="check-btn">Проверить</button>
+        </form>
+        <div id="result"></div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 World of Particles</p>
+</footer>
+
+<script>
+    document.getElementById("check-btn").addEventListener("click", checkQuiz);
+
+    function checkQuiz() {
+        let score = 0;
+        const answers = { q1: "красный", q2: "красный", q3: "красный" };
+        const formData = new FormData(document.getElementById("quiz-form"));
+
+        for (let [question, answer] of formData.entries()) {
+            if (answers[question] === answer) {
+                score++;
+            }
+        }
+
+        document.getElementById("result").innerText = "Вы набрали " + score + " из 3 баллов.";
+    }
+</script>
+
+</body>
+</html>

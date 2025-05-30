@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кот Шрёдингера</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #1e1e1e;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: #555;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border: 4px solid white;
+            cursor: pointer;
+        }
+        .box:hover {
+            background-color: #666;
+        }
+        .cat {
+            display: none;
+            width: 100px;
+            position: absolute;
+        }
+        .devices {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        .device {
+            width: 80px;
+            height: 80px;
+            background-color: #333;
+            border: 2px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            text-align: center;
+        }
+        #status {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Эксперимент с котом Шрёдингера</h1>
+    <p>Эксперимент с котом Шрёдингера — это мысленный эксперимент, предложенный физиком Эрвином Шрёдингером, чтобы показать странности квантовой механики.</p>
+    <ul>
+        <li>
+            Кот помещён в коробку с атомом, который может распасться (шанс 50 на 50), детектором радиации, молотком и капсулой с ядовитым газом.
+        </li>
+        <li>
+            Если атом распадается, детектор активируется, молоток разбивает капсулу, и газ убивает кота.
+        </li>
+        <li>
+            Согласно квантовой механике, пока коробка закрыта, атом находится в суперпозиции (распался и не распался одновременно). Следовательно, кот тоже находится в суперпозиции: жив и мёртв одновременно.
+        </li>
+        <li>
+            Только когда мы открываем коробку (наблюдаем систему), суперпозиция "разрушается", и кот становится либо живым, либо мёртвым.
+        </li>
+    </ul>
+
+    <div class="container">
+        <div class="box" id="box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/200px-Cat03.jpg" class="cat" id="cat">
+        </div>
+        <div class="devices">
+            <div class="device">Атом</div>
+            <div class="device">Детектор</div>
+            <div class="device">Молоток</div>
+            <div class="device">Газ</div>
+        </div>
+    </div>
+    <p id="status">Состояние: Неопределённое</p>
+
+    <script>
+        const box = document.getElementById('box');
+        const cat = document.getElementById('cat');
+        const statusText = document.getElementById('status');
+
+        box.addEventListener('click', () => {
+            // Рандомное состояние атома: распался или нет
+            const isAtomDecayed = Math.random() > 0.5;
+
+            // Логика взаимодействия устройств
+            const isGasReleased = isAtomDecayed; // Если атом распался, газ выпускается
+            const isCatAlive = !isGasReleased; // Если газ выпущен, кот умирает
+
+            // Обновление изображения кота
+            cat.style.display = 'block';
+            cat.src = isCatAlive ? 
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/200px-Cat03.jpg' : 
+                'https://scontent.ftse2-1.fna.fbcdn.net/v/t39.30808-6/300429506_130366483063381_3701362938435008300_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=hvmK-AAFGXwQ7kNvgEVSCoZ&_nc_zt=23&_nc_ht=scontent.ftse2-1.fna&_nc_gid=AZmAVwvuZp4RQsfixuQblQf&oh=00_AYBNsZ5nIyxgLBZE4arYBaHX-VA8V1hSHvYM5ePsKwhbRQ&oe=675755BC';
+
+            // Обновление текста статуса
+            statusText.textContent = `Состояние: Атом ${isAtomDecayed ? 'распался' : 'не распался'}, 
+                газ ${isGasReleased ? 'выпущен' : 'не выпущен'}, кот ${isCatAlive ? 'живой' : 'мёртвый'}`;
+        });
+    </script>
+</body>
+</html>
